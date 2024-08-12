@@ -7,6 +7,7 @@ vcpkg_from_github(
     PATCHES
         tweak-install.patch
         fix-build.patch
+		const-cast.patch
 )
 
 SET(GCC_PERMISSIVE_FLAGS "-fpermissive")
