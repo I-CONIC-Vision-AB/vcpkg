@@ -2,8 +2,10 @@ vcpkg_from_github(
     OUT_SOURCE_PATH SOURCE_PATH
     REPO thorvg/thorvg
     REF "v${VERSION}"
-    SHA512 2bc5f34ecdf988b755a8efc40dccebdedfa039164d6e23f0560aaa361ed3994620af4d5ab9d66377544b07a1eca4eaebdae8b7761d234da4c4b43075ca9aebb2
+    SHA512 428a9e09f9e0d1dffd06862331a892c79b233c022403b4b97418a769e5b0c849146f6920c3ee8733894a73c6641175daf3f92a71b61e2fad99996d1729e0f5a2
     HEAD_REF master
+    PATCHES
+      revert-mutex.patch
 )
 
 if(VCPKG_LIBRARY_LINKAGE STREQUAL "static")
@@ -29,6 +31,7 @@ vcpkg_configure_meson(
         -Dtests=false
         -Dexamples=false
         -Dstrip=false
+        -Dextra=['']
     OPTIONS_DEBUG
         -Dlog=true
         -Dbindir=${CURRENT_PACKAGES_DIR}/debug/bin
