@@ -17,6 +17,7 @@ SET(VCPKG_C_FLAGS "${VCPKG_C_FLAGS}")
 vcpkg_cmake_configure(
     SOURCE_PATH "${SOURCE_PATH}/src"
     OPTIONS
+        -DCMAKE_CXX_STANDARD=11 # 17 removes std::unary_function
         -DBUILD_LOADLIBRARIES=OFF
         -DBUILD_EXAMPLES=OFF
         -DSUFFIX_LIB=
