@@ -20,6 +20,7 @@ vcpkg_extract_source_archive(
         remove_unnecessary_boost_dependency.diff
         force-cpp11.patch
 		fix-msvc-version.patch
+        fix-cmake4.patch
 )
 
 file(REMOVE_RECURSE "${SOURCE_PATH}/cmake/modules")
