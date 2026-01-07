@@ -1,13 +1,14 @@
-
 vcpkg_from_github(
     OUT_SOURCE_PATH SOURCE_PATH
     REPO eProsima/Fast-DDS
     REF "v${VERSION}"
-    SHA512 88f92886832bd734f633134d37f8efef557ce97a1a459337b81f1e4f9b9979ab985dc520ddb8ecfe66903cbab28f8d901b2199f98eb9f41ed5a108183522815d
+    SHA512 92869a930fe0b67ae4b457a00cb273aba6e52af3f7c39f7fc2ded8e7285237871d99579b31c28e831bebde820aeef190a70827c9e8a02c7119ca1908b181f3b6
     HEAD_REF master
     PATCHES
-        fix-find-package-asio.patch
+        fix-deps.patch
         pdb-file.patch
+        disable-werror.patch
+        include-cstdint.patch
 )
 
 set(extra_opts "")
@@ -22,6 +23,8 @@ endif()
 vcpkg_cmake_configure(
     SOURCE_PATH "${SOURCE_PATH}"
     OPTIONS
+        -DSECURITY=ON
+        -DFORCE_CXX=14 # foonathan memory debug needs C++14 constexpr
         ${extra_opts}
 )
 
@@ -71,9 +74,6 @@ elseif(VCPKG_TARGET_IS_LINUX)
 endif()
 
 vcpkg_replace_string("${CURRENT_PACKAGES_DIR}/tools/fastdds/discovery/parser.py" "tool_path / '../../../bin'" "tool_path / '../../${PORT}'")
-if( VCPKG_BUILD_TYPE STREQUAL "debug")
-    vcpkg_replace_string("${CURRENT_PACKAGES_DIR}/share/fastdds/fast-discovery-server-targets-debug.cmake" [[${_IMPORT_PREFIX}/tools/fastdds/fast-discovery-serverd-1.0.1]] [[${_IMPORT_PREFIX}/tools/fastdds/fast-discovery-server-1.0.1]])
-endif()
 
 file(INSTALL "${CMAKE_CURRENT_LIST_DIR}/usage" DESTINATION "${CURRENT_PACKAGES_DIR}/share/${PORT}")
 if(VCPKG_LIBRARY_LINKAGE STREQUAL "static" OR NOT VCPKG_TARGET_IS_WINDOWS)
