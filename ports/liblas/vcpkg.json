@@ -13,6 +13,7 @@
     "boost-program-options",
     "boost-property-tree",
     "boost-uuid",
+	"gdal",
     "libgeotiff",
     {
       "name": "vcpkg-cmake",

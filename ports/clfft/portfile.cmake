@@ -7,6 +7,8 @@ vcpkg_from_github(
     PATCHES
         tweak-install.patch
         fix-build.patch
+		const-cast.patch
+		no-m64-linux.patch
 )
 
 vcpkg_cmake_configure(

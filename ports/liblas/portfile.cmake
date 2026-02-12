@@ -20,6 +20,7 @@ vcpkg_extract_source_archive(
         remove_unnecessary_boost_dependency.diff
         force-cpp11.patch
         fix-cmake4.patch
+		fix-msvc-version.patch
 )
 
 file(REMOVE_RECURSE "${SOURCE_PATH}/cmake/modules")
@@ -35,6 +36,7 @@ vcpkg_cmake_configure(
         ${FEATURE_OPTIONS}
         -DBUILD_OSGEO4W=OFF
         -DWITH_TESTS=OFF
+		-DWITH_GDAL=ON
     OPTIONS_DEBUG
         -DWITH_UTILITIES=OFF
 )

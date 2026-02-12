@@ -45,6 +45,7 @@ vcpkg_cmake_configure(
         -DWITH_EXAMPLES=OFF
         -DWITH_LIBSHARPYUV=OFF
         -DWITH_OpenH264_DECODER=OFF
+		-DWITH_X265=OFF
         -DVCPKG_LOCK_FIND_PACKAGE_Brotli=OFF
         -DVCPKG_LOCK_FIND_PACKAGE_Doxygen=OFF
         -DVCPKG_LOCK_FIND_PACKAGE_LIBDE265=ON   # feature candidate

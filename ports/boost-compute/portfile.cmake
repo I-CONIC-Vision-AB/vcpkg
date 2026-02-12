@@ -8,6 +8,7 @@ vcpkg_from_github(
     HEAD_REF master
     PATCHES
         opt-filesystem.diff
+		clean-program-cache.patch
 )
 
 set(FEATURE_OPTIONS "")
